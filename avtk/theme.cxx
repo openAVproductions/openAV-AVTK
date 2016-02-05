@@ -71,8 +71,7 @@ int Theme::load( std::string theme )
 			int colNum = 0;
 
 			if( !v.is<picojson::object>() ) {
-				printf("Error %s: v is NOT array\n", __PRETTY_FUNCTION__);
-				printf("Theme file:\n\n%s\n\n", &theme[0]);
+				printf("%s : Error  v is NOT array\n", __PRETTY_FUNCTION__);
 				return -1;
 			}
 

@@ -55,7 +55,7 @@ UI::UI( int w__, int h__, PuglNativeWindow parent, const char* windowName ) :
 	dragDropTargetVerified       = false;
 	dragDropTargetVerifiedWidget = 0;
 
-	themes.push_back( new Theme( this, RED ) );
+	themes.push_back( new Theme( this, BLUE ) );
 	theme_ = themes.back();
 }
 
