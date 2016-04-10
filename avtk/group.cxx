@@ -257,6 +257,7 @@ void Group::h(int h__)
 
 void Group::draw( cairo_t* cr )
 {
+
 	if( visible() ) {
 		for(int i = 0; i < children.size(); i++ ) {
 			Widget* c = children.at( i );
@@ -264,10 +265,11 @@ void Group::draw( cairo_t* cr )
 				c->draw( cr );
 		}
 
-		if ( false ) { // draws group boundary
+		if ( true ) { // draws group boundary
+			printf("drawing group\n");
 			roundedBox(cr, x_, y_, w_, h_, theme_->cornerRadius_ );
 			theme_->color( cr, FG );
-			cairo_set_line_width(cr, 0.5);
+			cairo_set_line_width(cr, 0.9);
 			cairo_stroke(cr);
 		}
 

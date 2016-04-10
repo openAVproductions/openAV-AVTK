@@ -65,6 +65,10 @@ int main(int argc, char** argv)
 		ui->run();
 		delete ui;
 	}
+	else
+	{
+		printf("This program requires an argument of the widget to test\n");
+	}
 
 #ifdef AVTK_DEBUG
 	int widgetsOnExit = Avtk::Widget::widgetCounter;
