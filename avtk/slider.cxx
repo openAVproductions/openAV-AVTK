@@ -60,6 +60,18 @@ void Slider::draw( cairo_t* cr )
 	theme_->color( cr, FG );
 	cairo_stroke(cr);
 
+	if( label_visible ) {
+		cairo_set_font_size(cr, 15.0);
+		{
+			cairo_text_extents_t extents;
+			cairo_text_extents(cr, label(), &extents);
+			cairo_move_to(cr,
+			              (x_ + w_ / 2) - extents.width / 2,
+			              (y_ + h_ / 2) + extents.height / 2 - 2);
+		}
+		cairo_show_text( cr, label() );
+	}
+
 	// fader
 	if( dragMode() == DM_DRAG_VERTICAL ) {
 		const int range = (h_-faderHeight-2);
