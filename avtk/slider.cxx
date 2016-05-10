@@ -69,6 +69,8 @@ void Slider::draw( cairo_t* cr )
 			              (x_ + w_ / 2) - extents.width / 2,
 			              (y_ + h_ / 2) + extents.height / 2 - 2);
 		}
+		cairo_set_source_rgb(cr, 1,1,1);
+		//theme_->color( cr, BG_DARK );
 		cairo_show_text( cr, label() );
 	}
 
