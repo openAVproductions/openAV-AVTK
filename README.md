@@ -55,6 +55,34 @@ the default color.
 If the `setColor()` function returns null, then the default compiled in AVTK 
 theme will be used.
 
+Building
+--------
+To build a static library from the AVTK source:
+```
+cd avtk
+mkdir build
+cd build
+cmake ..
+make
+```
+The current directory now has two binaries
+1. The `avtkDemo` application, just run to see an AVTK UI
+2. The `avtkTests` widget tester, run with a command line argument to test
+   the specific widget. Examples include `./avtkTests` and pass an argument
+   from the following list: `dialog` `dial` `group` `key` `list` `number`
+
+Using
+-----
+To use AVTK in your own application, it is recommended to *copy* the source
+code into your tree. This allows you to link statically to AVTK, which
+avoids a lot of issues when embedding plugins UIs. OpenAV does not intend
+to support dynamic linking of AVTK, or maintaining a backwards-compatilble
+ABI.
+
+After building AVTK, a `libavtk.a` static archive of AVTK is in the build
+directory. Statically link your application against this .a file, and
+you're ready to run!
+
 License
 -------
 AVTK is licensed under the 3-clause BSD license. This allows commercial use
