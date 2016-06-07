@@ -31,6 +31,10 @@ int main(int argc, char** argv)
 {
 	Avtk::UI* ui = 0;
 
+	bool export_png = 0;
+	if( argc > 2 )
+		export_png = 1;
+
 	if( argc > 1 ) {
 		if( strcmp( argv[1], "dial") == 0 )
 			ui = new DialUI();
@@ -68,6 +72,11 @@ int main(int argc, char** argv)
 	else
 	{
 		printf("This program requires an argument of the widget to test\n");
+	}
+
+	if( export_png )
+	{
+		cairo_status_t cairo_surface_write_to_png (cairo_surface_t *surface, const char *filename);
 	}
 
 #ifdef AVTK_DEBUG
