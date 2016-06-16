@@ -51,7 +51,7 @@
 
 namespace Avtk
 {
-int fileUpLevel( std::string path, std::string& newPath );
+int loadSample( std::string path, std::vector< float >& sample, bool printErrors = true );
 }
 #endif // OPENAV_AVTK_UTILS_HXX
 
