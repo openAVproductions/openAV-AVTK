@@ -21,6 +21,9 @@
    @file pugl_x11.c X11 Pugl Implementation.
 */
 
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#pragma GCC diagnostic ignored "-Wnarrowing"
+
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
