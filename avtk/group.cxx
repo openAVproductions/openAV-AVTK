@@ -266,7 +266,7 @@ void Group::draw( cairo_t* cr )
 		}
 
 		if ( true ) { // draws group boundary
-			printf("drawing group\n");
+			//printf("drawing group\n");
 			roundedBox(cr, x_, y_, w_, h_, theme_->cornerRadius_ );
 			theme_->color( cr, FG );
 			cairo_set_line_width(cr, 0.9);
