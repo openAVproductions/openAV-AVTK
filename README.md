@@ -59,13 +59,15 @@ Building
 --------
 To build a static library from the AVTK source:
 ```
-cd avtk
+git clone https://github.com/openAVproductions/openAV-AVTK
+cd openAV-AVTK
 mkdir build
 cd build
 cmake ..
 make
 ```
 The current directory now has two binaries
+
 1. The `avtkDemo` application, just run to see an AVTK UI
 2. The `avtkTests` widget tester, run with a command line argument to test
    the specific widget. Examples include `./avtkTests` and pass an argument
