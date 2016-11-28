@@ -54,12 +54,12 @@ link_directories   ( ${X11_LIBRARY_DIRS} )
 
 SET(CMAKE_CXX_FLAGS "-msse -msse2 -mfpmath=sse -g") # -fsanitize=address
 
-FILE(GLOB src libs/pffft.cxx avtk/*.cxx )
+FILE(GLOB src libs/pffft.cxx avtk/*.cxx avtk/pugl/pugl_x11.c )
 
 ADD_LIBRARY( avtk STATIC ${src} )
 
 IF(AVTK_DEMO_AND_TEST)
-  ADD_EXECUTABLE( avtkDemo test_ui.cxx main.cxx avtk/pugl/pugl_x11.c )
+  ADD_EXECUTABLE( avtkDemo test_ui.cxx main.cxx)
   FILE(GLOB testSrc tests/*.cxx)
   ADD_EXECUTABLE( avtkTests ${testSrc} avtk/pugl/pugl_x11.c )
 
