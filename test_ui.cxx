@@ -38,7 +38,7 @@
 #include <sstream>
 
 TestUI::TestUI( PuglNativeWindow parent ):
-	Avtk::UI( 810, 530, parent )
+	Avtk::UI( 810, 590, parent )
 {
 	Avtk::Widget* w = 0;
 
@@ -222,6 +222,8 @@ TestUI::TestUI( PuglNativeWindow parent ):
 	w =  new Avtk::Slider( this,  15,350, 250, 22, "Zoom" );
 	w =  new Avtk::Slider( this,  15,374, 250, 22, "Vol" );
 	*/
+
+	w = new Avtk::Rotary(this, 100, 400, 160, 160, "Rotary");
 
 	dialog = new Avtk::Dialog( this, 60, 60, 320, 100, "Dialog" );
 	//dialog->run( "Avtk Dialog", "This is the dialog text.", Avtk::Dialog::OK_CANCEL, 119+810/2., 530/2. );

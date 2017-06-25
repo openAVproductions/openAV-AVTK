@@ -1,5 +1,5 @@
 /*
- * Copyright(c) 2016, OpenAV
+ * Copyright(c) 2017, OpenAV
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,38 +29,50 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef OPENAV_AVTK_HXX
-#define OPENAV_AVTK_HXX
+#include "rotary.hxx"
 
-#define OPENAV_OK 0
-#define OPENAV_ERROR -1
-
-// the UI header, defines lots of interaction functionality
+#include <math.h>
+#include <stdio.h>
 #include "ui.hxx"
-#include "utils.hxx"
-
-// the Theme class definition
 #include "theme.hxx"
 
-// container class
-#include "group.hxx"
-#include "scroll.hxx"
 
-// widget headers
-#include "box.hxx"
-#include "text.hxx"
-#include "list.hxx"
-#include "dial.hxx"
-#include "image.hxx"
-#include "dialog.hxx"
-#include "button.hxx"
-#include "number.hxx"
-#include "slider.hxx"
-#include "rotary.hxx"
-#include "spectrum.hxx"
-#include "envelope.hxx"
-#include "waveform.hxx"
-#include "listitem.hxx"
-#include "eventeditor.hxx"
+using namespace Avtk;
 
-#endif // OPENAV_AVTK_HXX
+Rotary::Rotary( Avtk::UI* ui, int x_, int y_, int w_, int h_, std::string l) :
+	Widget( ui, x_, y_, w_, h_, l )
+{
+	dragMode( DM_DRAG_VERTICAL );
+	scrollDisable = false;
+}
+
+void Rotary::draw( cairo_t* cr )
+{
+	cairo_save( cr );
+
+	theme_->color( cr, FG, 0.5 );
+	cairo_new_sub_path( cr );
+	cairo_arc(cr, x_+w_/2,y_+h_/2,  w_/2.f - 8, 0, 3.1416 * 2 );
+	cairo_set_line_width(cr, w_ / 20.f);
+	cairo_stroke(cr);
+
+	cairo_new_sub_path( cr );
+	cairo_arc(cr, x_+w_/2,y_+h_/2, w_/2.f - 8, 3.1416 * 2 * (value() - 0.1 - 0.25), 3.1414 * 2 * (value() - 0.25));
+	cairo_line_to(cr, x_+w_/2,y_+h_/2);
+
+	theme_->color( cr, HIGHLIGHT, 0.8 );
+	cairo_set_line_width(cr, w_ / 7.f);
+	cairo_stroke(cr);
+
+	if( label_visible ) {
+		cairo_text_extents_t ext;
+		cairo_text_extents( cr, label(), &ext );
+
+		cairo_move_to( cr, x_+w_/2-ext.width/2., y_+h_+ext.height/2.-4);
+		cairo_set_source_rgb( cr, 1,1,1 );
+		cairo_show_text( cr, label() );
+	}
+
+	cairo_restore( cr );
+}
+

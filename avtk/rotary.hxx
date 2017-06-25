@@ -1,5 +1,5 @@
 /*
- * Copyright(c) 2016, OpenAV
+ * Copyright(c) 2017, OpenAV
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,38 +29,23 @@
  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef OPENAV_AVTK_HXX
-#define OPENAV_AVTK_HXX
+#ifndef OPENAV_AVTK_ROTARY_HXX
+#define OPENAV_AVTK_ROTARY_HXX
 
-#define OPENAV_OK 0
-#define OPENAV_ERROR -1
+#include "widget.hxx"
 
-// the UI header, defines lots of interaction functionality
-#include "ui.hxx"
-#include "utils.hxx"
+namespace Avtk
+{
 
-// the Theme class definition
-#include "theme.hxx"
+class Rotary : public Widget
+{
+public:
+	Rotary( Avtk::UI* ui, int x, int y, int w, int h, std::string label);
+	virtual ~Rotary() {}
 
-// container class
-#include "group.hxx"
-#include "scroll.hxx"
+	virtual void draw( cairo_t* cr );
+};
 
-// widget headers
-#include "box.hxx"
-#include "text.hxx"
-#include "list.hxx"
-#include "dial.hxx"
-#include "image.hxx"
-#include "dialog.hxx"
-#include "button.hxx"
-#include "number.hxx"
-#include "slider.hxx"
-#include "rotary.hxx"
-#include "spectrum.hxx"
-#include "envelope.hxx"
-#include "waveform.hxx"
-#include "listitem.hxx"
-#include "eventeditor.hxx"
+};
 
-#endif // OPENAV_AVTK_HXX
+#endif // OPENAV_AVTK_ROTARY_HXX
